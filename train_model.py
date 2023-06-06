@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     X, Y = get_images_and_labels(images)    # Get images and their labels
 
-    plot_data() # Plot number of data categorical
+    # plot_data() # Plot number of data categorical
 
     Y = onehot_labels(Y)                    # Convert labels to onehot labels ==> down: 100, right: 010, up: 001
 
