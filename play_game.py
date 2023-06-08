@@ -7,13 +7,13 @@ from keras.models import model_from_json
 
 
 # frame = {"top":120, "left":1146, "width":160, "height":150} # Borders of the screenshot
-frame = {"top":300, "left":145, "width":360, "height":400} # Borders of the screenshot
+frame = {"top":350, "left":265, "width":360, "height":360} # Borders of the screenshot
 ss_manager = mss()  # We are using mss() for taking a screenshot
 is_exit = False     # A variable for stopping the program
 my_timer = 0        # A variable which store the time passed
 
-width = 80     # Width of all images
-height = 75    # Height of all images
+width = 100     # Width of all images
+height = 100    # Height of all images
 
 
 # A function for go down in the game
