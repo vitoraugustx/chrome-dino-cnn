@@ -7,7 +7,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-# bounding boxes
+# bounding box
 # [x, y, width, height]
 x, y, w, h = 230, 350, 360, 360
 
