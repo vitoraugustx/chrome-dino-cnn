@@ -1,3 +1,4 @@
+# Importando as bibliotecas
 import time
 from PIL import Image
 from mss import mss
@@ -5,9 +6,10 @@ import keyboard
 import numpy as np
 from keras.models import model_from_json
 
-frame = {"top":350, "left":230, "width":360, "height":360} # Caixa do printscreen
+# PC 2 deixar left = 260, PC 1 deixar left = 230
+frame = {"top":350, "left":260, "width":360, "height":360} # Caixa do printscreen
 ss_manager = mss()  # Gerenciador de printscreen
-is_exit = False     
+is_exit = False # Variável para encerrar o programa  
 
 width = 100 # Largura da imagem     
 height = 100 # Altura da imagem    
@@ -24,6 +26,7 @@ def up():
     keyboard.release(keyboard.KEY_DOWN)
     keyboard.press(keyboard.KEY_UP)
 
+# Função para soltar as teclas
 def none():
     keyboard.release(keyboard.KEY_DOWN)
     keyboard.release(keyboard.KEY_UP)
@@ -33,9 +36,8 @@ def exit():
     global is_exit
     is_exit = True
 
-
 # Main
-if __name__ == '__main__':
+def main():
     keyboard.add_hotkey("esc", exit) # Encerra o programa ao apertar esc
 
     # Carrega o modelo treinado
@@ -88,4 +90,7 @@ if __name__ == '__main__':
             none()
             print("none")
         
+        # Tempo de espera para não sobrecarregar o processador
         time.sleep(0.000000000001)
+
+main()
