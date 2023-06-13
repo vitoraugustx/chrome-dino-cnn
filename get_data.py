@@ -13,7 +13,7 @@ import numpy as np
 x, y, w, h = 230, 350, 360, 360
 
 # [y, x, width, height]
-frame = {"top":350, "left":230, "width":360, "height":360}
+frame = {"top":y, "left":x, "width":w, "height":h}
 
 
 ss_manager = mss() # Gerenciador de printscreen 
