@@ -6,8 +6,8 @@ import keyboard
 import numpy as np
 from keras.models import model_from_json
 
-# PC 2 deixar left = 260, PC 1 deixar left = 230
-frame = {"top":350, "left":260, "width":360, "height":360} # Caixa do printscreen
+# PC 2 deixar left = 330, PC 1 deixar left = 230
+frame = {"top":350, "left":330, "width":360, "height":360} # Caixa do printscreen
 ss_manager = mss()  # Gerenciador de printscreen
 is_exit = False # Variável para encerrar o programa  
 

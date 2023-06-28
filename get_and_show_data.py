@@ -11,7 +11,7 @@ import numpy as np
 
 # Caixa do printscreen
 # [x, y, width, height]
-x, y, w, h = 230, 350, 360, 360
+x, y, w, h = 330, 350, 360, 360
 bboxes = [np.array([x, y, w, h])]
 
 frame = {"top":0, "left":0, "width":1920, "height":1080} # Caixa do print da tela inteira
@@ -52,9 +52,8 @@ def take_screenshot(ss_id, key, path="./images/"):
     resized = cv2.resize(screen, (1366, 768))
 
     # Mosta a imagem
-    cv2.imshow("OpenCV/Numpy normal", resized)
+    cv2.imshow("Roi", resized)
     cv2.waitKey()
-    time.sleep(1.5)
 
 
 # Função para encerrar o programa

@@ -10,7 +10,7 @@ import numpy as np
 
 # Caixa do printscreen
 # [x, y, width, height]
-x, y, w, h = 230, 350, 360, 360
+x, y, w, h = 330, 350, 360, 360
 
 # [y, x, width, height]
 frame = {"top":y, "left":x, "width":w, "height":h}
