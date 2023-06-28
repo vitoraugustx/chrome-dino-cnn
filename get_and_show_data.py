@@ -76,6 +76,7 @@ def main():
             break
 
         try:
+            time.sleep(0.05)
             # Se a tecla 'up' for pressionada, chama a função para tirar print com o parâmetro "up"
             if keyboard.is_pressed(keyboard.KEY_UP):        
                 take_screenshot(ss_id, "up", path="./images/up/")
