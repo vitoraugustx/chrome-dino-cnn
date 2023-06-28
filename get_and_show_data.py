@@ -8,34 +8,60 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+
 # Caixa do printscreen
 # [x, y, width, height]
 x, y, w, h = 230, 350, 360, 360
+bboxes = [np.array([x, y, w, h])]
 
-# [y, x, width, height]
-frame = {"top":y, "left":x, "width":w, "height":h}
-
+frame = {"top":0, "left":0, "width":1920, "height":1080} # Caixa do print da tela inteira
+roi_frame = {"top": y, "left": x, "width": w, "height": h} # Caixa da região de interesse
 
 ss_manager = mss() # Gerenciador de printscreen 
 count = 0 # Contador de imagens        
-is_exit = False # Variável para encerrar o programa    
+is_exit = False # Variável para encerrar o programa 
+
+# Função para desenhar as caixas
+def draw_bboxes(img, bboxes, color=(0, 0, 255), thickness=2):
+    for bbox in bboxes:
+        cv2.rectangle(img, tuple(bbox[:2]), tuple(bbox[:2]+bbox[-2:]), color, thickness)
 
 # Função para tirar o printscreen
 def take_screenshot(ss_id, key, path="./images/"):
     global count
     count += 1
     print(f"{key}: {count}")
-    # Tira o print da região configurada
+
+    # Tira o print da região de interesse e da tela inteira
+    roi = ss_manager.grab(roi_frame)
     img = ss_manager.grab(frame)
 
     # Converte o printscreen para imagem e salva
-    image = Image.frombytes("RGB", img.size, img.rgb)
+    image = Image.frombytes("RGB", roi.size, roi.rgb)
     image.save(path +f"{key}_{ss_id}_{count}.png")
+    
+    screen = np.asarray(img)
+
+    # Converte de BGRA para BGR
+    screen = cv2.cvtColor(screen, cv2.COLOR_BGRA2BGR)
+
+    # Desenha as caixas
+    draw_bboxes(screen, bboxes)
+
+    # Redimensiona a imagem
+    resized = cv2.resize(screen, (1366, 768))
+
+    # Mosta a imagem
+    cv2.imshow("OpenCV/Numpy normal", resized)
+    cv2.waitKey()
+    time.sleep(1.5)
+
 
 # Função para encerrar o programa
 def exit():
     global is_exit
     is_exit = True
+
 
 # Main
 def main():
